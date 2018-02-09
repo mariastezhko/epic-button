@@ -26,15 +26,18 @@ io.sockets.on('connection', function(socket) {
   console.log("Client/socket is connected!");
   console.log("Client/socket id is: ", socket.id);
   var response = 'The button has been pushed ' + count + ' time(s)';
+  // Emit the maessage to a newly connected user.
   socket.emit( 'current_count', {response: response});
   socket.on( "pushing_button", function (){
       count ++;
       var response = 'The button has been pushed ' + count + ' time(s)';
+      // Full broadcast every time the counter has increased.
       io.emit( 'updated_count', {response: response});
   })
   socket.on( "resetting", function (){
       count = 0;
       var response = 'The button has been pushed ' + count + ' time(s)';
+      // Full broadcast every time the counter has been reset.
       io.emit( 'reset_count', {response: response});
   })
 })

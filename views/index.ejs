@@ -6,12 +6,10 @@
     <script type ="text/javascript">
          $(document). ready(function (){
             var socket  = io.connect();
-
             // When a user just connected, the server emits the current count
             socket.on( 'current_count', function (data){
                   $('#response').html('<p>' + data.response + '</p>');
             });
-
             // Emit the event when an epic button was pushed
             $( '#epic').click(function (){
                   console.log('hi');
@@ -30,7 +28,6 @@
             socket.on( 'reset_count', function (data){
                   $('#response').html('<p>' + data.response + '</p>');
             });
-
         })
     </script>
 </head>
