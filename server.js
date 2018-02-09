@@ -22,10 +22,11 @@ var server = app.listen(8000, function() {
 });
 var io = require('socket.io').listen(server);
 
-
 io.sockets.on('connection', function(socket) {
   console.log("Client/socket is connected!");
   console.log("Client/socket id is: ", socket.id);
+  var response = 'The button has been pushed ' + count + ' time(s)';
+  socket.emit( 'current_count', {response: response});
   socket.on( "pushing_button", function (){
       count ++;
       var response = 'The button has been pushed ' + count + ' time(s)';
