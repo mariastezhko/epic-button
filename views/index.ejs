@@ -3,32 +3,7 @@
 <title>Epic Button Game</title>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script type ="text/javascript" src="/socket.io/socket.io.js"></script>
-    <script type ="text/javascript">
-         $(document). ready(function (){
-            var socket  = io.connect();
-            // When a user just connected, the server emits the current count
-            socket.on( 'current_count', function (data){
-                  $('#response').html('<p>' + data.response + '</p>');
-            });
-            // Emit the event when an epic button was pushed
-            $( '#epic').click(function (){
-                  console.log('hi');
-                  socket.emit("pushing_button");
-            });
-            // Get a response from the server
-            socket.on( 'updated_count', function (data){
-                  $('#response').html('<p>' + data.response + '</p>');
-            });
-            // Emit the event when a reset button was pushed
-            $( '#reset').click(function (){
-                  console.log('reset');
-                  socket.emit("resetting");
-            });
-            // Get a response from the server
-            socket.on( 'reset_count', function (data){
-                  $('#response').html('<p>' + data.response + '</p>');
-            });
-        })
+    <script type ="text/javascript" src="/js/main.js"></script>
     </script>
 </head>
 <body>
